@@ -1,26 +1,34 @@
-import { useState } from 'react'
-import logo from './logo.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
-import useSWR from 'swr'
+import { BrowserRouter, Link } from 'react-router-dom'
+import { Routes } from './Routes'
 
-const fetcher = (url: string) => fetch(url).then(res => res.json()) 
+const Header: React.FC = () => {
+  return(
+    <>
+    <p className='text-left pl-3 pt-3 text-2xl font-bold'>Faves</p>
+      <div className="">
+        <Link to="/">
+        <button className='text-sm px-3 py-2 font-semibold text-slate-700'>+ Home</button>
+        </Link>
+        <Link to="/likes">
+        <button className='text-sm px-3 py-2 font-semibold text-slate-700'>+ Liked Movies</button>
+        </Link>
+      </div>
+    </>
+  )
+}
+const App: React.FC = () => {
 
-
-function App() {
-  const { data } = useSWR('', fetcher)
   const [movies, setMovies] = useState({})
 
   return (
-    <div className="App">
-      <p>Faves</p>
-      <div className="flex justify-center items-center">
-        <button className='rounded-full w-32 bg-slate-500 text-sm px-3 py-2 text-slate-100'>Home</button>
-        <button className='rounded-full w-32 bg-slate-500 text-sm px-3 py-2 text-slate-100'>Liked Movies</button>
-
-        
-        
-      </div>
-    </div>
+    <BrowserRouter>
+      <Header />
+          <div className="App w-screen h-screen">
+            <Routes />
+          </div>
+    </BrowserRouter>
   )
 }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import {MovieDBResponse, Movie} from '../models'
+import { MovieDBResponse, Movie } from '../models'
 import { MovieCard } from '../components'
 
 const useMovies = () => {
@@ -17,9 +17,11 @@ const Home: React.FC = () => {
     const { movies } = useMovies()
     return (
         <>
-            <div className="grid grid-cols-6 gap-0">
+            <div className="flex flex-wrap">
                 {movies && movies.map(movie => (
-                   <MovieCard key={movie.id} movie={movie} />
+                    <div className="w-full sm:w-1/4 p-2 sm:p-2">
+                        <MovieCard key={movie.id} movie={movie} />
+                    </div>
                 ))}
             </div>
         </>

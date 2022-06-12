@@ -25,8 +25,8 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Header />
-          <div className="App w-screen h-screen">
-            <Routes />
+          <div className="w-full h-screen">
+              <Routes />
           </div>
     </BrowserRouter>
   )

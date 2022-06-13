@@ -1,15 +1,12 @@
 import create from 'zustand'
-import { Movie } from '../models'
-
-interface MovieState {
-    likedMovies: Movie[]
-    push: (movie: Movie) => void
-    pop: (movie: Movie) => void
-}
+import { MovieState } from '../models'
 
 export const useStore = create<MovieState>(set => ({
+        movies: [],
         likedMovies: [],
-        push: (movie) => set(state => ({ likedMovies: state.likedMovies.concat(movie) })),
-        pop: (movie) => set(state => ({ likedMovies: state.likedMovies.filter(likedMovie => likedMovie !== movie) })),
+        load: (movie) => set(state => ({ movies: state.movies.concat(movie), likedMovies: state.likedMovies })),
+        push: (movie) => set(state => ({ movies: state.movies, likedMovies: state.likedMovies.concat(movie) })),
+        pop: (movie) => set(state => ({ movies: state.movies, likedMovies: state.likedMovies.filter(likedMovie => likedMovie.id !== movie.id) })),
+        flush: () => set(state => ({ movies: [], likedMovies: state.likedMovies }))
     })
 )

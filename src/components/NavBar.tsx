@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClapperboard, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 const NavBar: React.FC = () => {
     return (
@@ -13,6 +14,11 @@ const NavBar: React.FC = () => {
                         <h1 className='cursor-pointer text-left text-3xl pl-1 text-slate-700 font-bold tracking-tighter'>Faves</h1>
                     </div>
                 </Link>
+            </div>
+            <div className='w-full flex justify-end items-end pr-2 sm:hidden'>
+                <a href="https://github.com/mwimwii/faves-app">
+                    <FontAwesomeIcon icon={faGithub} size={'2x'} className='text-slate-700' />
+                </a>
             </div>
             <div className='w-full justify-between items-center hidden sm:flex'>
                 <div className='header__links w-1/3 flex items-center'>
@@ -33,6 +39,9 @@ const NavBar: React.FC = () => {
 
                 <div className='profile__pills sm:w-1/4 lg:w-1/3 hidden justify-evenly items-center md:flex'>
                     <FontAwesomeIcon icon={faUserCircle} size={'2x'} className='text-slate-700 lg:hidden' />
+                    <a href="https://github.com/mwimwii/faves-app">
+                        <FontAwesomeIcon icon={faGithub} size={'2x'} className='text-slate-700' />
+                    </a>
                     <div className='rounded-full w-1/3 px-2 py-1 text-xs font-bold text-center border-2 border-slate-500 hidden lg:block'>Login</div>
                     <div className='rounded-full w-1/3 px-2 py-1 text-xs font-bold text-center text-slate-50 bg-slate-500  hidden lg:block'>SignUp</div>
                 </div>

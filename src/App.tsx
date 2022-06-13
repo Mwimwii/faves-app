@@ -1,33 +1,15 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import { BrowserRouter, Link } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { Routes } from './Routes'
+import {BottomBar, NavBar} from './components'
 
-const Header: React.FC = () => {
-  return(
-    <>
-    <p className='text-left pl-3 pt-3 text-2xl font-bold'>Faves</p>
-      <div className="">
-        <Link to="/">
-        <button className='text-sm px-3 py-2 font-semibold text-slate-700'>+ Home</button>
-        </Link>
-        <Link to="/likes">
-        <button className='text-sm px-3 py-2 font-semibold text-slate-700'>+ Liked Movies</button>
-        </Link>
-      </div>
-    </>
-  )
-}
 const App: React.FC = () => {
-
-  const [movies, setMovies] = useState({})
-
   return (
     <BrowserRouter>
-      <Header />
-          <div className="w-full h-screen">
-              <Routes />
-          </div>
+      <div className='flex flex-col relative w-full h-full min-h-screen items-center'>
+        <NavBar />
+        <Routes />
+        <BottomBar />
+      </div>
     </BrowserRouter>
   )
 }
